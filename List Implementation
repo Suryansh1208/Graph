@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+class Graph{
+    public:
+    unordered_map<int,vector<int>>adj;
+    void addEdge(int source,int destn,bool dirtn){
+        //direction==0 toh undirected graph hai
+        //direction==1 toh directed graph hai
+        adj[source].push_back(destn);
+        if(dirtn==0){
+         adj[destn].push_back(source);
+        }
+    }
+    void print(){
+        for(auto Node:adj){
+            cout<<Node.first<<"->";
+            for(auto Neighbor:Node.second){
+                cout<<Neighbor<<",";
+                
+            }
+            cout<<endl;
+        }
+    }
+};
+int main() {
+    Graph g;
+    g.addEdge(0,1,1);
+    g.addEdge(1,3,1);
+    g.addEdge(1,2,1);
+    g.addEdge(2,3,1);
+    g.addEdge(0,3,1);
+    g.print();
+    
+//   int n;
+//   cout<<"Enter the number of Nodes"<<endl;
+//   cin>>n;
+//   vector<vector<int>>adj(n,vector<int>(n,0));
+//   int e;
+//   cout<<"Enter the number of Edges"<<endl;
+//   cin>>e;
+//   for(int i=0;i<e;i++){
+//     int u,v;
+//     cin>>u>>v;
+//     adj[u][v]=1;
+//   }
+//   for(int i=0;i<n;i++){
+//     for(int j=0;j<n;j++){
+//     cout<<adj[i][j]<<" ";
+//   }
+//   cout<<endl;
+//   }
+  return 0;
+}
